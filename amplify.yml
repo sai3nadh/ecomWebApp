@@ -14,7 +14,7 @@ frontend:
       commands:
         - npx ng build
   artifacts:
-    baseDirectory: dist/edufortune_static
+    baseDirectory: dist/ecommerce-app
     files:
       - '**/*'
   cache:
