@@ -1,0 +1,56 @@
+version: 1.0
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 20.16.0
+        - nvm use 20.16.0
+        - node -v
+        - npm -v
+        - npm cache clean --force
+        - npm cache verify
+        - npm install --legacy-peer-deps --force
+    build:
+      commands:
+        - npx ng build
+  artifacts:
+    baseDirectory: dist/edufortune_static
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+
+
+# version: 0.1
+# frontend:
+#   phases:
+#     preBuild:
+#       commands:
+#         - nvm install 18.13.0 
+#         - nvm use 18.13.0
+#         - npm -v
+#         - npm cache clean --force
+#         - npm cache verify
+#         # - npm install -g @angular/cli
+#         - npm install --legacy-peer-deps --force
+#         # - npm ci
+#         # - npm install -g npm@latest
+#         - npm -v
+#         # - npm install --save --legacy-peer-deps
+#         # - npm run build
+#         # - ng serve
+#         # - npm install -g @angular/cli@v8-lts
+#         # - npm ci
+#     build:
+#       commands:
+#         - npx ng build
+#         # - ng build --prod
+#   artifacts:
+#     baseDirectory: dist/edufortune_static
+#     files:
+#       - '**/*'
+#   cache:
+#     paths:
+#       - node_modules/**/*
+
