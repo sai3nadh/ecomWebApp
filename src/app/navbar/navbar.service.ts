@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -12,8 +13,16 @@ export class NavbarService {
 
   constructor(private http: HttpClient) { }
 
+  // getCategories(): Observable<any[]> {
+  //   return this.http.get<any[]>(`${this.apiUrl}/categories`);
+  // }
   getCategories(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/categories`);
+    return this.http.get<any[]>(`${this.apiUrl}/categories`).pipe(
+      catchError(error => {
+        console.error('Error fetching categories:', error);
+        return of([]); // Return an empty array or handle as needed
+      })
+    );
   }
 
   // constructor() { }
