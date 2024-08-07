@@ -17,7 +17,8 @@ export class LoginComponent {
   password: string = '';
   loginError: string = '';
 
-  private loginUrl = 'http://localhost:8084/api/users/login'; // Your API endpoint
+  private loginUrl = 'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
+  //'http://localhost:8084/api/users/login'; // Your API endpoint
 
   constructor(private http: HttpClient, private router: Router,
     private storageService: StorageService

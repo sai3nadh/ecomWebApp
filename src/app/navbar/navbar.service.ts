@@ -8,7 +8,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class NavbarService {
-  private apiUrl =   'http://localhost:8085/api' ;
+  private apiUrl =   'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
+  // 'http://localhost:8085/api' ;
   // 'http://localhost:8084/api/nav'; // Adjust URL accordingly
 
   constructor(private http: HttpClient) { }

@@ -31,7 +31,8 @@ export class RegistrationComponent {
   password: string = '';
   registrationError: string = '';
 
-  private registrationUrl = 'http://localhost:8084/api/users/register'; // Your API endpoint
+  private registrationUrl = 'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
+  //  'http://localhost:8084/api/users/register'; // Your API endpoint
 
   constructor(private http: HttpClient, private router: Router) {}
 
