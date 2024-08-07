@@ -28,16 +28,20 @@
         <!-- <li><a routerLink="/cart">Cart</a></li> -->
         <!-- <li><a routerLink="/contact">Contact</a></li> -->
         <li>
-            <form class="search-bar" (submit)="onSearch(searchInput.value)">
-                <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" #searchInput>
+            <form class="search-bar" (ngSubmit)="onSearch(searchQuery)">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  [(ngModel)]="searchQuery"
+                  name="searchQuery"
+                  #searchInput="ngModel"
+                />
                 <button type="submit">Search</button>
             </form>
         </li>
     </ul>
     <ul class="nav-profile">
-        <li class="link-button">
-            Cart
-        </li>
+        <li class="link-button">Cart</li>
         <li class="dropdown">
             <a href="#" class="dropbtn">Profile</a>
             <div class="dropdown-content">
@@ -48,7 +52,6 @@
                 <!-- <a href="#" (click)="signOut()">Sign Out OLD</a> -->
                 <!-- <button class="a" (click)="signOut()">Sign Out</button> -->
                 <button class="link-button" (click)="signOut()">Sign Out</button>
-
             </div>
         </li>
     </ul>

@@ -22,7 +22,7 @@ export class StorageService {
 
   getSessionItem(key: string): string | null {
     if (this.isSessionStorageAvailable()) {
-      return sessionStorage.getItem(key);
+      // return sessionStorage.getItem(key);
     }
     console.error('Session storage is not available.');
     return null;
@@ -30,7 +30,7 @@ export class StorageService {
 
   setSessionItem(key: string, value: string): void {
     if (this.isSessionStorageAvailable()) {
-      sessionStorage.setItem(key, value);
+      // sessionStorage.setItem(key, value);
     } else {
       console.error('Session storage is not available.');
     }
@@ -38,7 +38,7 @@ export class StorageService {
 
   removeSessionItem(key: string): void {
     if (this.isSessionStorageAvailable()) {
-      sessionStorage.removeItem(key);
+      // sessionStorage.removeItem(key);
     } else {
       console.error('Session storage is not available.');
     }
@@ -46,7 +46,7 @@ export class StorageService {
 
   clearSession(): void {
     if (this.isSessionStorageAvailable()) {
-      sessionStorage.clear();
+      // sessionStorage.clear();
     } else {
       console.error('Session storage is not available.');
     }

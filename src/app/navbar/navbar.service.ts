@@ -19,12 +19,13 @@ export class NavbarService {
   //   return this.http.get<any[]>(`${this.apiUrl}/categories`);
   // }
   getCategories(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/categories`).pipe(
-      catchError(error => {
-        console.error('Error fetching categories:', error);
-        return of([]); // Return an empty array or handle as needed
-      })
-    );
+    return of([]);
+    // return this.http.get<any[]>(`${this.apiUrl}/categories`).pipe(
+    //   catchError(error => {
+    //     console.error('Error fetching categories:', error);
+    //     return of([]); // Return an empty array or handle as needed
+    //   })
+    // );
   }
 
   // constructor() { }

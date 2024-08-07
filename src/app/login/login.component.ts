@@ -52,14 +52,14 @@ export class LoginComponent {
   console.log(response.userId);
   
   console.log("login success.. end");
-  if (this.storageService.isSessionStorageAvailable()) {
+  // if (this.storageService.isSessionStorageAvailable()) {
         
-    sessionStorage.setItem('userId', response.userId);
-    sessionStorage.setItem('email', response.email);
-    sessionStorage.setItem('username', response.username);
-    sessionStorage.setItem('firstName', response.firstName);
-    sessionStorage.setItem('lastName', response.lastName);
-  }
+  //   sessionStorage.setItem('userId', response.userId);
+  //   sessionStorage.setItem('email', response.email);
+  //   sessionStorage.setItem('username', response.username);
+  //   sessionStorage.setItem('firstName', response.firstName);
+  //   sessionStorage.setItem('lastName', response.lastName);
+  // }
           this.router.navigate(['/landing-page']);
         },
         (error) => {

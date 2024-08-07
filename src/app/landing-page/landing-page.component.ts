@@ -43,38 +43,30 @@ export class LandingPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.fetchUserData();
+    // this.fetchUserData();
     this.fetchMockData();
-    this.printSessionValues();
-    console.log("validate session"+this.userId);
+   
+    // console.log("validate session"+this.userId);
     // if(!this.userId ){
     //   console.log("inside ");
     //   this.router.navigate(['/login']);
     // }
   }
-  printSessionValues() {
-    console.log("landing page");
-    console.log('UserId:', this.storageService.getSessionItem('userId'));
-    console.log('Email:', this.storageService.getSessionItem('email'));
-    console.log('Username:', this.storageService.getSessionItem('username'));
-    console.log('FirstName:', this.storageService.getSessionItem('firstName'));
-    console.log('LastName:', this.storageService.getSessionItem('lastName'));
-    console.log("landing page");
-   }
+  
 
-  fetchUserData(): void {
-    this.userId = this.storageService.getSessionItem('userId');
-    this.email = this.storageService.getSessionItem('email');
-    this.username = this.storageService.getSessionItem('username');
-    this.firstName = this.storageService.getSessionItem('firstName');
-    this.lastName = this.storageService.getSessionItem('lastName');
-    console.log("landing pageeee");
-    console.log(this.userId);
-    if (!this.userId) {
-      console.error('User ID not found in session storage.');
-    }
-    // You can log or use these variables as needed
-  }
+  // fetchUserData(): void {
+  //   this.userId = this.storageService.getSessionItem('userId');
+  //   this.email = this.storageService.getSessionItem('email');
+  //   this.username = this.storageService.getSessionItem('username');
+  //   this.firstName = this.storageService.getSessionItem('firstName');
+  //   this.lastName = this.storageService.getSessionItem('lastName');
+  //   console.log("landing pageeee");
+  //   console.log(this.userId);
+  //   if (!this.userId) {
+  //     console.error('User ID not found in session storage.');
+  //   }
+  //   // You can log or use these variables as needed
+  // }
 
   fetchMockData(): void {
     this.http.get<any>('/assets/mock/mock-data.json').subscribe(
