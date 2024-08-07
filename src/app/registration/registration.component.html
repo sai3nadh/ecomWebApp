@@ -1,0 +1,84 @@
+<p>registration works!</p>
+
+<div class="container">
+    <h2>Register</h2>
+    <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+      <div *ngIf="registrationError" class="registration-error">{{ registrationError }}</div>
+  
+      <div> 
+        <label for="firstName">First Name:</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          [(ngModel)]="firstName"
+          required
+          #firstNameInput="ngModel"
+          placeholder="Enter your first name"
+          [class.invalid]="firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)"
+        />
+        <div *ngIf="firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)" class="error">
+          <div *ngIf="firstNameInput.errors?.['required']">First name is required.</div>
+        </div>
+      </div>
+  
+      <div>
+        <label for="lastName">Last Name:</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          [(ngModel)]="lastName"
+          required
+          #lastNameInput="ngModel"
+          placeholder="Enter your last name"
+          [class.invalid]="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)"
+        />
+        <div *ngIf="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)" class="error">
+          <div *ngIf="lastNameInput.errors?.['required']">Last name is required.</div>
+        </div>
+      </div>
+  
+      <div>
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          #emailInput="ngModel"
+          placeholder="Enter your email"
+          [class.invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+        />
+        <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="error">
+          <div *ngIf="emailInput.errors?.['required']">Email is required.</div>
+          <div *ngIf="emailInput.errors?.['email']">Enter a valid email.</div>
+        </div>
+      </div>
+  
+      <div>
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          #passwordInput="ngModel"
+          placeholder="Enter your password"
+          [class.invalid]="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)"
+        />
+        <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="error">
+          <div *ngIf="passwordInput.errors?.['required']">Password is required.</div>
+        </div>
+      </div>
+  
+      <div class="button-group">
+        <button type="submit">Register</button>
+        &nbsp; &nbsp;
+        <button type="button" (click)="onLogin()">Login</button>
+      </div>
+    </form>
+  </div>
+  

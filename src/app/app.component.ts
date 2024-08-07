@@ -1,13 +1,37 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+// import { BrowserModule } from '@angular/platform-browser';
+import { RouterOutlet } from '@angular/router'; // Import RouterOutlet
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ecommerce-app';
+  title = 'My Angular App';
 }
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { Router, RouterOutlet } from '@angular/router';
+
+// @Component({
+//   selector: 'app-root',
+//   standalone: true,
+//   imports: [RouterOutlet],
+//   templateUrl: './app.component.html',
+//   styleUrl: './app.component.css'
+// })
+// export class AppComponent implements OnInit{
+//   title = 'ecommerce-app';
+//   constructor(private router: Router) {}
+
+//   ngOnInit() {
+//     console.log('Configured Routes:', this.router.config);
+//   }
+
+// }
+

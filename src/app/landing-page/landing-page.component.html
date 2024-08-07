@@ -1,0 +1,49 @@
+<!-- <p>landing-page works!</p> -->
+<!-- 
+<header>
+  <div class="container">
+      <h1>My Website</h1>
+      <nav>
+          <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+          </ul>
+      </nav>
+  </div>
+</header> -->
+<app-navbar></app-navbar>
+<div class="landing-page-container">
+    <h1>Welcome to Our E-Commerce Store</h1>
+  
+    <div class="featured-products">
+      <h2>Featured Products</h2>
+      <div *ngFor="let product of featuredProducts" class="product-item">
+        <img [src]="product.imageUrl" alt="{{ product.name }}">
+        <div class="product-info">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+          <button (click)="addToCart(product)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Display Featured Products -->
+<div *ngIf="featuredProducts && featuredProducts.length">
+    <h2>Featured Products</h2>
+    <ul>
+      <li *ngFor="let product of featuredProducts">
+        {{ product.name }} -
+         <!-- {{ product.price  }} -->
+      </li>
+    </ul>
+  </div>
+  
+    <div class="categories">
+      <h2>Categories</h2>
+      <div *ngFor="let category of categories" class="category-item">
+        <h3>{{ category.name }}</h3>
+        <p>{{ category.description }}</p>
+      </div>
+    </div>
+  </div>
+  
