@@ -4,6 +4,7 @@ import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from '../services/storage.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent {
   password: string = '';
   loginError: string = '';
 
-  private loginUrl = 'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
+  private loginUrl = environment.apiUrl;
   //'http://localhost:8084/api/users/login'; // Your API endpoint
 
   constructor(private http: HttpClient, private router: Router,

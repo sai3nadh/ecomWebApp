@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-registration',
@@ -31,7 +32,7 @@ export class RegistrationComponent {
   password: string = '';
   registrationError: string = '';
 
-  private registrationUrl = 'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
+  private registrationUrl = environment.apiUrl;//'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
   //  'http://localhost:8084/api/users/register'; // Your API endpoint
 
   constructor(private http: HttpClient, private router: Router) {}
