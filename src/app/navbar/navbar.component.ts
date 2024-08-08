@@ -32,13 +32,12 @@ export class NavbarComponent {
       this.categories = data;
     });
     console.log('calling here')
-    this.printSessionValues();
-    this.userId = this.storageService.getSessionItem('userId');
+    // this.userId = this.storageService.getSessionItem('userId');
     console.log("uer id "+this.userId)
     if(!this.userId ){
       console.log("inside ");
-      alert('You don\'t have valid Active session. Please login again!!' )
-      this.router.navigate(['/login']);
+      // alert('You don\'t have valid Active session. Please login again!!' )
+      // this.router.navigate(['/login']);
     }
   }
   onSearch(query: string) {
@@ -50,19 +49,11 @@ export class NavbarComponent {
     return `/categories/${id}`; // Adjust this based on your routing setup
   }
   signOut() {
-    this.printSessionValues();
     // Clear all session storage variables
     sessionStorage.clear();
     // Navigate to the login page
     
     this.router.navigate(['/login']);
   }
-  printSessionValues() {
-    // this.userId = this.storageService.getSessionItem('userId');
-    console.log('UserId:', this.storageService.getSessionItem('userId'));
-    console.log('Email:', this.storageService.getSessionItem('email'));
-    console.log('Username:', this.storageService.getSessionItem('username'));
-    console.log('FirstName:', this.storageService.getSessionItem('firstName'));
-    console.log('LastName:', this.storageService.getSessionItem('lastName'));
-  }
+  
 }

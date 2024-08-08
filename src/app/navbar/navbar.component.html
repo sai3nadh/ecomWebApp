@@ -29,9 +29,13 @@
         <!-- <li><a routerLink="/contact">Contact</a></li> -->
         <li>
             <form class="search-bar" (submit)="onSearch(searchInput.value)">
-                <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" #searchInput>
+                <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" #searchInput>
                 <button type="submit">Search</button>
             </form>
+            <!-- <form class="search-bar" (submit)="onSearch(searchInput.value)">
+                <input type="text" placeholder="Search..." [(ngModel)]="searchQuery" #searchInput>
+                <button type="submit">Search</button>
+            </form> -->
         </li>
     </ul>
     <ul class="nav-profile">

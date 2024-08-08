@@ -15,16 +15,16 @@ export class NavbarService {
 
   constructor(private http: HttpClient) { }
 
-  // getCategories(): Observable<any[]> {
+  getCategories(): Observable<any[]> {
   //   return this.http.get<any[]>(`${this.apiUrl}/categories`);
   // }
-  getCategories(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/categories`).pipe(
-      catchError(error => {
-        console.error('Error fetching categories:', error);
+  // getCategories(): Observable<any[]> {
+  //   return this.http.get<any[]>(`${this.apiUrl}/categories`).pipe(
+  //     catchError(error => {
+  //       console.error('Error fetching categories:', error);
         return of([]); // Return an empty array or handle as needed
-      })
-    );
+    //   })
+    // );
   }
 
   // constructor() { }
