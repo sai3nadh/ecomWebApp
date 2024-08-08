@@ -18,8 +18,8 @@ export class LoginComponent {
   password: string = '';
   loginError: string = '';
 
-  private loginUrl = environment.apiUrl;
-  //'http://localhost:8084/api/users/login'; // Your API endpoint
+  private loginUrl = // environment.apiUrl;
+  'http://localhost:8084/api/users/login'; // Your API endpoint
 
   constructor(private http: HttpClient, private router: Router,
     private storageService: StorageService
