@@ -13,6 +13,69 @@
   </div>
 </header> -->
 <app-navbar></app-navbar>
+
+
+
+<div class="landing-page">
+  <!-- Recommendations Section -->
+  <section class="section recommendations">
+    <h2>Recommended Products</h2>
+    <div class="products-container-wrapper">
+      <button class="scroll-button left" (click)="scrollLeft('recommended')">&lt;</button>
+      <div class="products-container" #recommended>
+        <div class="product-card" *ngFor="let product of recommendedProducts">
+          <img [src]="product.img" [alt]="product.name" />
+          <p>{{ product.name }}</p>
+        </div>
+      </div>
+      <button class="scroll-button right" (click)="scrollRight('recommended')">&gt;</button>
+    </div>
+  </section>
+
+  <!-- Offers Section -->
+  <section class="section offers">
+    <h2>Special Offers</h2>
+    <div class="products-container-wrapper">
+      <button class="scroll-button left" (click)="scrollLeft('offers')">&lt;</button>
+      <div class="products-container" #offers>
+        <div class="product-card" *ngFor="let product of offerProducts">
+          <img [src]="product.img" [alt]="product.name" />
+          <p>{{ product.name }}</p>
+        </div>
+      </div>
+      <button class="scroll-button right" (click)="scrollRight('offers')">&gt;</button>
+    </div>
+  </section>
+</div>
+
+<div class="landing-page1">
+  <!-- Header: Assuming you already have it included elsewhere -->
+
+  <!-- Recommendations Section -->
+  <section class="section recommendations">
+    <h2>Recommended Products</h2>
+    <div class="products-container">
+      <div class="product-card" *ngFor="let product of recommendedProducts">
+        <img [src]="product.img" [alt]="product.name" />
+        <p>{{ product.name }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offers Section -->
+  <section class="section offers">
+    <h2>Special Offers</h2>
+    <div class="products-container">
+      <div class="product-card" *ngFor="let product of offerProducts">
+        <img [src]="product.img" [alt]="product.name" />
+        <p>{{ product.name }}</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
 <div class="landing-page-container">
     <h1>Welcome to Our E-Commerce Store</h1>
   
@@ -46,4 +109,6 @@
       </div>
     </div>
   </div>
+  
+
   

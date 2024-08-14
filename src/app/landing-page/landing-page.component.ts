@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common'; // <-- Add this
 import { StorageService } from '../services/storage.service';  // Adjust the path as necessary
 import { NavbarComponent } from '../navbar/navbar.component'; // Correct path to NavbarComponent
@@ -28,6 +28,9 @@ interface Category {
   styleUrls: ['./landing-page.component.css']  // Corrected styleUrls
 })
 export class LandingPageComponent implements OnInit {
+  @ViewChild('recommended') recommendedContainer!: ElementRef;
+  @ViewChild('offers') offersContainer!: ElementRef;
+
 
   userId: string | null = null;
   email: string | null = null;
@@ -38,6 +41,32 @@ export class LandingPageComponent implements OnInit {
   featuredProducts: Product[] = [];
   categories: Category[] = [];
 
+  recommendedProducts = [
+    { name: 'Product 1', img: 'assets/img/product1.jpg' },
+    { name: 'Product 2', img: 'assets/img/product2.jpg' },
+    { name: 'Product 3', img: 'assets/img/product3.jpg' },
+    { name: 'Product 4', img: 'assets/img/product4.jpg' },
+    { name: 'Product 5', img: 'assets/img/product4.jpg' },
+    { name: 'Product 6', img: 'assets/img/product4.jpg' },
+    { name: 'Product 4', img: 'assets/img/product4.jpg' },
+    { name: 'Product 5', img: 'assets/img/product4.jpg' },
+    { name: 'Product 6', img: 'assets/img/product4.jpg' },
+    { name: 'Product 4', img: 'assets/img/product4.jpg' },
+    { name: 'Product 5', img: 'assets/img/product4.jpg' },
+    { name: 'Product 6', img: 'assets/img/product4.jpg' },
+  ];
+
+  offerProducts = [
+    { name: 'Offer Product 1', img: 'assets/img/offer1.jpg' },
+    { name: 'Offer Product 2', img: 'assets/img/offer2.jpg' },
+    { name: 'Offer Product 3', img: 'assets/img/offer3.jpg' },
+    { name: 'Offer Product 4', img: 'assets/img/offer4.jpg' },
+    { name: 'Offer Product 1', img: 'assets/img/offer1.jpg' },
+    { name: 'Offer Product 2', img: 'assets/img/offer2.jpg' },
+    { name: 'Offer Product 3', img: 'assets/img/offer3.jpg' },
+    { name: 'Offer Product 4', img: 'assets/img/offer4.jpg' },
+ 
+  ];
   constructor(private http: HttpClient, private storageService: StorageService,
     private router: Router
   ) { }
@@ -51,6 +80,16 @@ export class LandingPageComponent implements OnInit {
     //   console.log("inside ");
     //   this.router.navigate(['/login']);
     // }
+  }
+
+  scrollLeft(section: string): void {
+    const container = section === 'recommended' ? this.recommendedContainer.nativeElement : this.offersContainer.nativeElement;
+    container.scrollBy({ left: -200, behavior: 'smooth' });
+  }
+
+  scrollRight(section: string): void {
+    const container = section === 'recommended' ? this.recommendedContainer.nativeElement : this.offersContainer.nativeElement;
+    container.scrollBy({ left: 200, behavior: 'smooth' });
   }
   
 

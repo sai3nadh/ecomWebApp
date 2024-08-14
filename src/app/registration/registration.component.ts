@@ -32,8 +32,8 @@ export class RegistrationComponent {
   password: string = '';
   registrationError: string = '';
 
-  private registrationUrl = //environment.apiUrl;//'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
-   'http://localhost:8084/api/users/register'; // Your API endpoint
+  private registrationUrl = environment.apiUrl+ 'api/users/register';//'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
+  //  'http://localhost:8084/api/users/register'; // Your API endpoint
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -68,8 +68,19 @@ export class RegistrationComponent {
     this.http.post(this.registrationUrl, registrationPayload, { responseType: 'text' })
       .subscribe(
         (response: any) => {
+          // console.log('Registration successful:', response);
+          // this.router.navigate(['/landing-page']);
+            // Check if the response indicates success
+        // Assuming the response should indicate success for status 200
+        if (response === 'Registration successful') {
           console.log('Registration successful:', response);
           this.router.navigate(['/landing-page']);
+        } else {
+          // Handle unexpected successful response that is not a proper success message
+          this.registrationError = 'Registration failed. Unexpected response+.'+response.message;
+          console.error('Unexpected response:', response.message);
+          alert('Registration failed. Unexpected response.');
+      }
         },
         (error) => {
           this.registrationError = 'Registration failed. Please try again.';
