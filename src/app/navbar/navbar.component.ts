@@ -41,6 +41,10 @@ export class NavbarComponent {
     //   this.router.navigate(['/login']);
     // }
   }
+  stayOnPage(event: Event) {
+    event.preventDefault();
+    // Perform your action here
+  }
   onSearch(query: string) {
     if (query) {
       this.router.navigate(['/search'], { queryParams: { q: query } });

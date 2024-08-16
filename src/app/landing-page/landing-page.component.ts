@@ -42,29 +42,24 @@ export class LandingPageComponent implements OnInit {
   categories: Category[] = [];
 
   recommendedProducts = [
-    { name: 'Product 1', img: 'assets/img/product1.jpg' },
-    { name: 'Product 2', img: 'assets/img/product2.jpg' },
-    { name: 'Product 3', img: 'assets/img/product3.jpg' },
-    { name: 'Product 4', img: 'assets/img/product4.jpg' },
-    { name: 'Product 5', img: 'assets/img/product4.jpg' },
-    { name: 'Product 6', img: 'assets/img/product4.jpg' },
-    { name: 'Product 4', img: 'assets/img/product4.jpg' },
-    { name: 'Product 5', img: 'assets/img/product4.jpg' },
-    { name: 'Product 6', img: 'assets/img/product4.jpg' },
-    { name: 'Product 4', img: 'assets/img/product4.jpg' },
-    { name: 'Product 5', img: 'assets/img/product4.jpg' },
-    { name: 'Product 6', img: 'assets/img/product4.jpg' },
+    { name: 'Product 1', img: 'assets/mock/products/product1.jpg' },
+    { name: 'Product 2', img: 'assets/mock/products/product2.jpg' },
+    { name: 'Product 3', img: 'assets/mock/products/product3.jpg' },
+    { name: 'Product 4', img: 'assets/mock/products/product4.jpg' },
+    { name: 'Product 5', img: 'assets/mock/products/product1.jpg' },
+    { name: 'Product 6', img: 'assets/mock/products/product2.jpg' },
+    { name: 'Product 4', img: 'assets/mock/products/product3.jpg' }
   ];
 
   offerProducts = [
-    { name: 'Offer Product 1', img: 'assets/img/offer1.jpg' },
-    { name: 'Offer Product 2', img: 'assets/img/offer2.jpg' },
-    { name: 'Offer Product 3', img: 'assets/img/offer3.jpg' },
-    { name: 'Offer Product 4', img: 'assets/img/offer4.jpg' },
-    { name: 'Offer Product 1', img: 'assets/img/offer1.jpg' },
-    { name: 'Offer Product 2', img: 'assets/img/offer2.jpg' },
-    { name: 'Offer Product 3', img: 'assets/img/offer3.jpg' },
-    { name: 'Offer Product 4', img: 'assets/img/offer4.jpg' },
+    { name: 'Offer Product 1', img: 'assets/mock/products/product1.jpg' },
+    { name: 'Offer Product 2', img: 'assets/mock/products/product2.jpg' },
+    { name: 'Offer Product 3', img: 'assets/mock/products/product3.jpg' },
+    { name: 'Offer Product 4', img: 'assets/mock/products/product4.jpg' },
+    { name: 'Offer Product 1', img: 'assets/mock/products/product1.jpg' },
+    { name: 'Offer Product 2', img: 'assets/mock/products/product2.jpg' },
+    { name: 'Offer Product 3', img: 'assets/mock/products/product3.jpg' },
+    { name: 'Offer Product 4', img: 'assets/mock/products/product4.jpg' },
  
   ];
   constructor(private http: HttpClient, private storageService: StorageService,
