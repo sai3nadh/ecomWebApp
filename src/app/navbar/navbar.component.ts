@@ -46,19 +46,30 @@ export class NavbarComponent {
     // Perform your action here
   }
   onSearch(query: string) {
-    if (query) {
-      this.router.navigate(['/search'], { queryParams: { q: query } });
+    // if (query) {
+    //   console.log("enter to query")
+    //   this.router.navigate(['/search'], { queryParams: { q: query } });
+    // }
+    if (this.searchQuery.trim()) {
+      console.log('calledddd');
+      this.router.navigate(['/search'], { queryParams: { query: this.searchQuery } });
     }
   }
   getCategoryLink(id: number): string {
     return `/categories/${id}`; // Adjust this based on your routing setup
+  }
+  cartLink() {
+    // return `/cart`; // Adjust this based on your routing setup
+    this.router.navigate(['/cart']);
   }
   signOut() {
     // this.printSessionValues();
     // Clear all session storage variables
     sessionStorage.clear();
     // Navigate to the login page
-    
+    sessionStorage.clear();
+    this.storageService.clearAllLocalVariables();
+    this.storageService.clearSession();
     this.router.navigate(['/login']);
   }
   // printSessionValues() {

@@ -61,12 +61,7 @@
     transition: transform 0.3s ease-in-out;
   }
   
-  /* .product-card img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  } */
-  .product-card img {
+   .product-card img {
     width: 150px; /* or any desired width */
     height: auto; /* maintains aspect ratio */
     max-height: 150px; /* limits height to avoid overflow */

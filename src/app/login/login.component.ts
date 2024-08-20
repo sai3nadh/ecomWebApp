@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { environment } from '../../environments/environment';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   userId: string = '';
   password: string = '';
   loginError: string = '';
@@ -24,6 +24,15 @@ export class LoginComponent {
   constructor(private http: HttpClient, private router: Router,
     private storageService: StorageService
   ) {}
+
+  ngOnInit(): void {
+    // Check if the user is already logged in by checking localStorage for userId
+    const storedUserId = this.storageService.getLocalVariable('userId');
+    if (storedUserId) {
+      console.log('User is already logged in, redirecting to landing page.');
+      this.router.navigate(['/landing-page']);
+    }
+  }
 
   onSubmit() {
     if (!this.userId || !this.password) {
@@ -60,7 +69,13 @@ export class LoginComponent {
   //   sessionStorage.setItem('firstName', response.firstName);
   //   sessionStorage.setItem('lastName', response.lastName);
   // }
-          this.router.navigate(['/landing-page']);
+  
+        this.storageService.setLocalVariable('userId', response.userId);
+        this.storageService.setLocalVariable('email', response.email);
+        this.storageService.setLocalVariable('username', response.username);
+        this.storageService.setLocalVariable('firstName', response.firstName);
+        this.storageService.setLocalVariable('lastName', response.lastName);
+        this.router.navigate(['/landing-page']);
         },
         (error) => {
           this.loginError = 'Invalid user ID or password.';

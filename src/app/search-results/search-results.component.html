@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+
+<!-- <p>search-results works!</p> -->
+
+<div *ngIf="results.length" class="results-container">
+    <h3 class="results-title">Search Results for "{{ searchQuery }}":</h3>
+    <ul class="category-list">
+      <li *ngFor="let category of results" class="category-item">
+        <h4 class="category-name">{{ category.name }}</h4>
+        <p class="category-description">{{ category.description }}</p>
+        <ul class="product-list">
+          <li *ngFor="let product of category.products" class="product-item">
+            <div class="product-content">
+              <div class="product-image">
+                <img [src]="product.images[0]?.imageUrl" alt="{{ product.images[0]?.altText || 'Product image' }}">
+              </div>
+              <div class="product-info">
+                <h5 class="product-name">
+                  <a [routerLink]="['/product', product.productId]">{{ product.name }}</a>
+                </h5>
+                <div class="product-rating">
+                  <strong>{{ getAverageRating(product.reviews) }} stars</strong>
+                </div>
+                <div class="quantity-container">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" min="1" [(ngModel)]="product.quantity" class="quantity-input">
+                  </div>
+                <div class="product-price">{{ product.price | currency }}</div>
+                <button class="add-to-cart-btn" (click)="addToCart(product)">Add to Cart</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  
+<div *ngIf="results.length" class="results-container">
+    <h3 class="results-title">Search Results for "{{ searchQuery }}":</h3>
+    <ul class="category-list">
+      <li *ngFor="let category of results" class="category-item">
+        <h4 class="category-name">{{ category.name }}</h4>
+        <p class="category-description">{{ category.description }}</p>
+        <ul class="product-list">
+          <li *ngFor="let product of category.products" class="product-item">
+            <div class="product-content">
+              <div class="product-image">
+                <img [src]="product.images[0]?.imageUrl" alt="{{ product.images[0]?.altText || 'Product image' }}">
+              </div>
+              <div class="product-info">
+                <h5 class="product-name">{{ product.name }}</h5>
+                <div class="product-rating">
+                  <strong>{{ getAverageRating(product.reviews) }} stars</strong>
+                </div>
+                <div class="quantity-container">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" min="1" [(ngModel)]="product.quantity" class="quantity-input">
+                  </div>
+                <div class="product-price">{{ product.price | currency }}</div>
+                <button class="add-to-cart-btn" (click)="addToCart(product)">Add to Cart</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Display the error message if there are no results and an error message exists -->
+  <div *ngIf="!results.length && errorMessage" class="error-container">
+    <h3 class="error-message">{{ errorMessage }}</h3>
+  </div>
+
+  
+  <!-- old -->
+<div *ngIf="results.length" class="results-container" hidden>
+    <h3 class="results-title">Search Results for "{{ searchQuery }}":</h3>
+    <ul class="category-list">
+      <li *ngFor="let category of results" class="category-item">
+        <h4 class="category-name">{{ category.name }}</h4>
+        <!-- <p class="category-description">{{ category.description }}</p> -->
+        <ul class="product-list">
+          <li *ngFor="let product of category.products" class="product-item">
+            <div class="product-header">
+              <h5 class="product-name">{{ product.name }} - {{ product.price | currency }}</h5>
+            </div>
+            <p class="product-description">{{ product.description }}</p>
+            <div class="product-images">
+              <img *ngFor="let image of product.images" [src]="image.imageUrl" alt="{{ image.altText || 'Product image' }}" class="product-image">
+            </div>
+            <ul class="review-list">
+              <li *ngFor="let review of product.reviews" class="review-item">
+                <strong class="review-rating">{{ review.rating }} stars:</strong> <span class="review-comment">{{ review.comment }}</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Display the error message if there are no results and an error message exists -->
+  <!-- <div *ngIf="!results.length && errorMessage" class="error-container">
+    <h3 class="error-message">{{ errorMessage }}</h3>
+  </div>
+   -->

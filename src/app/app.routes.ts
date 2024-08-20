@@ -6,6 +6,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 export const routes: Routes = [
   // { path: '', redirectTo: '/landing-page', pathMatch: 'full' },
@@ -16,6 +17,8 @@ export const routes: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'cart', component:CartComponent },
+  { path: 'search', component: SearchResultsComponent },
   { path: '**', redirectTo: '/login' }
   // { path: '**', redirectTo: '/landing-page' }
   // this imp. its redirecting the pages

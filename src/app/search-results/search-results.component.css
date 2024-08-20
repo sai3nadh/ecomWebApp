@@ -1,0 +1,147 @@
+/* Results container */
+.results-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title styling */
+  .results-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Category styling */
+  .category-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .category-item {
+    margin-bottom: 30px;
+  }
+  
+  .category-name {
+    font-size: 1.2em;
+    color: #007bff;
+  }
+  
+  .category-description {
+    font-style: italic;
+    color: #555;
+  }
+  
+  /* Product styling */
+  .product-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .product-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+  }
+  
+  .product-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .product-image img {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .product-name {
+    font-size: 1.1em;
+    color: #333;
+  }
+  
+  .product-rating {
+    margin: 10px 0;
+    color: #ff9800;
+    font-weight: bold;
+  }
+  
+  .product-price {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .add-to-cart-btn {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #218838;
+  }
+  
+  /* Error message styling */
+  .error-container {
+    padding: 20px;
+    background-color: #ffe6e6;
+    border: 1px solid #ff4d4d;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .error-message {
+    color: #d32f2f;
+    font-size: 1.2em;
+  }
+  
+  /* Quantity container */
+.quantity-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .quantity-container label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .quantity-input {
+    width: 60px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  /* Button styling */
+  .add-to-cart-btn {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #218838;
+  }

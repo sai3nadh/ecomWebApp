@@ -1,1 +1,178 @@
-<p>cart works!</p>
+<app-navbar></app-navbar>
+
+<div *ngIf="cart === null">
+  <div class="empty-cart-message">
+    <h3>Your cart is currently empty</h3>
+    <p>You haven't added any items to the cart yet. Start exploring our products and add your favorite items to the cart.</p>
+    <a routerLink="/shop" class="btn btn-primary">Start Shopping</a>
+  </div>
+</div>
+
+<div *ngIf="cart && cart.cartItems && cart.cartItems.length > 0">
+  <h2>Your Cart</h2>
+  <div *ngFor="let item of cart.cartItems; let i = index">
+    <!-- Displaying product details -->
+    <div *ngIf="productDetails[i]">
+      <h3>{{ productDetails[i].name }}</h3>
+      <p>{{ productDetails[i].description }}</p>
+      <p>Price: {{ productDetails[i].price | currency }}</p>
+      <p>Quantity: {{ item.quantity }}</p>
+      <p>Total: {{ item.quantity * productDetails[i].price | currency }}</p>
+    
+      <!-- Displaying product images -->
+      <div *ngIf="productDetails[i].images.length > 0">
+        <img *ngFor="let image of productDetails[i].images" [src]="image.imageUrl" [alt]="image.altText || productDetails[i].name" width="100">
+      </div>
+    
+      <!-- Displaying product reviews -->
+      <div *ngIf="productDetails[i].reviews.length > 0">
+        <h4>Reviews:</h4>
+        <div *ngFor="let review of productDetails[i].reviews">
+          <p>Rating: {{ review.rating }} / 5</p>
+          <p>Comment: {{ review.comment }}</p>
+          <p>Reviewed on: {{ review.createdAt | date }}</p>
+        </div>
+      </div>
+    
+      <hr>
+    </div>
+  </div>
+
+    
+    <!-- Proceed to Checkout Button -->
+    <button class="btn btn-primary" (click)="openCheckoutModal()">Proceed to Checkout</button>
+  </div>
+ 
+  <!-- Checkout Modal -->
+<div *ngIf="showCheckoutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="cancelCheckout()">&times;</span>
+      <h3>Payment Details</h3>
+      <form>
+        <div class="form-group">
+          <label for="cardName">Name on Card:</label>
+          <input type="text" id="cardName" class="form-control" value="John Doe" readonly>
+        </div>
+        <div class="form-group">
+          <label for="cardNumber">Card Number:</label>
+          <input type="text" id="cardNumber" class="form-control" value="4111 1111 1111 1111" readonly>
+        </div>
+        <div class="form-group">
+          <label for="expiryDate">Expiry Date:</label>
+          <input type="text" id="expiryDate" class="form-control" value="12/25" readonly>
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" class="form-control" value="123" readonly>
+        </div>
+        <div class="form-group">
+            <label for="address">You are placing your order to:</label>
+            <input type="text" id="cvv" class="form-control" value="221B Baker Street, Flat 2, London, NW1 6XE, UK" readonly>
+          </div>
+        
+        <div class="modal-buttons">
+          <button type="button" class="btn btn-secondary" (click)="cancelCheckout()">Cancel</button>
+          <button type="button" class="btn btn-success" (click)="placeOrder()">Place Order</button>
+        </div>
+      </form>
+
+    </div>
+  
+  
+  
+</div>
+
+<div *ngIf="!cart && cart !== null">
+  <p>Loading cart...</p>
+</div>
+
+
+<div *ngIf="cart && cart.cartItems && cart.cartItems.length > 0" hidden>
+    <h2>Your Cart</h2>
+    <div *ngFor="let item of cart.cartItems; let i = index">
+      <!-- Existing product details display code -->
+      <div *ngIf="productDetails[i]">
+        <!-- Existing product details code... -->
+        <hr>
+      </div>
+    </div>
+  
+    <!-- Proceed to Checkout Button -->
+    <button class="btn btn-primary" (click)="openCheckoutModal()">Proceed to Checkout</button>
+  </div>
+ 
+  <!-- Checkout Modal -->
+<div *ngIf="showCheckoutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="cancelCheckout()">&times;</span>
+      <h3>Payment Details</h3>
+      <form>
+        <div class="form-group">
+          <label for="cardName">Name on Card:</label>
+          <input type="text" id="cardName" class="form-control" value="John Doe" readonly>
+        </div>
+        <div class="form-group">
+          <label for="cardNumber">Card Number:</label>
+          <input type="text" id="cardNumber" class="form-control" value="4111 1111 1111 1111" readonly>
+        </div>
+        <div class="form-group">
+          <label for="expiryDate">Expiry Date:</label>
+          <input type="text" id="expiryDate" class="form-control" value="12/25" readonly>
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" class="form-control" value="123" readonly>
+        </div>
+        <div class="form-group">
+            <label for="address">You are placing your order to:</label>
+            <input type="text" id="cvv" class="form-control" value="221B Baker Street, Flat 2, London, NW1 6XE, UK" readonly>
+          </div>
+        
+        <div class="modal-buttons">
+          <button type="button" class="btn btn-secondary" (click)="cancelCheckout()">Cancel</button>
+          <button type="button" class="btn btn-success" (click)="placeOrder()">Place Order</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  
+  
+
+<!-- <p>cart works!</p> -->
+<!-- 
+<div *ngIf="cart">
+    <h2>Your Cart</h2>
+    <div *ngFor="let item of cart.cartItems; let i = index">
+      <!- - Displaying product details - ->
+      <div *ngIf="productDetails[i]">
+        <h3>{{ productDetails[i].name }}</h3>
+        <p>{{ productDetails[i].description }}</p>
+        <p>Price: {{ productDetails[i].price | currency }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Total: {{ item.quantity * productDetails[i].price | currency }}</p>
+  
+        <!- - Displaying product images - ->
+        <div *ngIf="productDetails[i].images.length > 0">
+          <img *ngFor="let image of productDetails[i].images" [src]="image.imageUrl" [alt]="image.altText || productDetails[i].name" width="100">
+        </div>
+  
+        <!- - Displaying product reviews - ->
+        <div *ngIf="productDetails[i].reviews.length > 0">
+          <h4>Reviews:</h4>
+          <div *ngFor="let review of productDetails[i].reviews">
+            <p>Rating: {{ review.rating }} / 5</p>
+            <p>Comment: {{ review.comment }}</p>
+            <p>Reviewed on: {{ review.createdAt | date }}</p>
+          </div>
+        </div>
+  
+        <hr>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!cart">
+    <p>Loading cart...</p>
+  </div>
+   -->
