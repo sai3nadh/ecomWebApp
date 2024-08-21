@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+
+<div *ngIf="orders.length === 0" class="empty-orders-message">
+  <h3>You have no previous orders</h3>
+  <p>Start shopping to place your first order!</p>
+  <a routerLink="/shop" class="btn btn-primary">Start Shopping</a>
+</div>
+
+<div *ngIf="orders.length > 0" class="orders-container">
+  <h2>Your Previous Orders</h2>
+  <div *ngFor="let order of orders" class="order-item">
+    <h3>Order #{{ order.orderId }} - {{ order.orderDate | date }}</h3>
+    <p>Total Amount: {{ order.totalAmount | currency }}</p>
+    <div *ngFor="let item of order.orderItems" class="order-item-details">
+      <p>Product ID: {{ item.productId }}</p>
+      <p>Quantity: {{ item.quantity }}</p>
+      <p>Price: {{ item.price | currency }}</p>
+      <hr>
+    </div>
+  </div>
+</div>

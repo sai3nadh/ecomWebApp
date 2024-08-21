@@ -28,10 +28,18 @@ export class NavbarComponent {
   ) { }
 
   ngOnInit(): void {
-    this.navService.getCategories().subscribe(data => {
-      this.categories = data;
-    });
-    console.log('calling here')
+    this.navService.getCategories().subscribe(
+      (data: any[]) => {
+        this.categories = data;
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
+    // this.navService.getCategories().subscribe(data => {
+    //   this.categories = data;
+    // });
+    // console.log('calling here')
     // this.printSessionValues();
     // this.userId = this.storageService.getSessionItem('userId');
     // console.log("uer id "+this.userId)
@@ -57,6 +65,10 @@ export class NavbarComponent {
   }
   getCategoryLink(id: number): string {
     return `/categories/${id}`; // Adjust this based on your routing setup
+  }
+  onCategoryClick(categoryName: string): void {
+    // Navigate to the search page with the category name as the query parameter
+    this.router.navigate(['/search'], { queryParams: { query: categoryName } });
   }
   cartLink() {
     // return `/cart`; // Adjust this based on your routing setup

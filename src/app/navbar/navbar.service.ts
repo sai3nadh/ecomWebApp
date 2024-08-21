@@ -9,8 +9,8 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class NavbarService {
-  private apiUrl =  environment.apiUrl;//  'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
-  // 'http://localhost:8085/api' ;
+  private apiUrl =  //environment.apiUrl;//  'https://j41myv2bm7.execute-api.eu-west-2.amazonaws.com';
+  'http://localhost:8083/api' ;
   // 'http://localhost:8084/api/nav'; // Adjust URL accordingly
 
   constructor(private http: HttpClient) { }
@@ -19,13 +19,13 @@ export class NavbarService {
   //   return this.http.get<any[]>(`${this.apiUrl}/categories`);
   // }
   getCategories(): Observable<any[]> {
-    return of([]);
-    // return this.http.get<any[]>(`${this.apiUrl}/categories`).pipe(
-    //   catchError(error => {
-    //     console.error('Error fetching categories:', error);
-    //     return of([]); // Return an empty array or handle as needed
-    //   })
-    // );
+    // return of([]);
+    return this.http.get<any[]>(`${this.apiUrl}/categories`).pipe(
+      catchError(error => {
+        console.error('Error fetching categories:', error);
+        return of([]); // Return an empty array or handle as needed
+      })
+    );
   }
 
   // constructor() { }

@@ -35,7 +35,7 @@
     </ul>
   </div>
   
-<div *ngIf="results.length" class="results-container">
+<div *ngIf="results.length" class="results-container" hidden>
     <h3 class="results-title">Search Results for "{{ searchQuery }}":</h3>
     <ul class="category-list">
       <li *ngFor="let category of results" class="category-item">

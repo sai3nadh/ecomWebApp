@@ -1,3 +1,78 @@
 <app-navbar></app-navbar>
 
-<p>product-detail works!</p>
+ 
+
+
+<div  *ngIf="product" class="product-detail-container">
+  <h2>{{ product.name }}</h2>
+  <p>{{ product.description }}</p>
+
+  <div class="product-image-container">
+    <img *ngFor="let image of product.images" [src]="image.imageUrl" [alt]="image.altText || product.name">
+  </div>
+
+  <div class="quantity-container">
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" min="1" [(ngModel)]="quantity" class="quantity-input">
+  </div>
+  
+  <div class="product-info">
+    <p><strong>Price:</strong> {{ product.price | currency }}</p>
+    <p><strong>Stock:</strong> {{ product.stock }}</p>
+    <button class="add-to-cart-btn"  (click)="addToCart()">Add to Cart</button>
+  </div>
+
+  <div class="product-reviews">
+    <h3>Customer Reviews</h3>
+    <div *ngIf="product.reviews.length > 0; else noReviews">
+      <div *ngFor="let review of product.reviews" class="review-item">
+        <p><strong>Rating:</strong> {{ review.rating }} / 5</p>
+        <p>{{ review.comment }}</p>
+        <p class="review-date">{{ review.createdAt | date:'mediumDate' }}</p>
+      </div>
+    </div>
+    <ng-template #noReviews>
+      <p>No reviews yet. Be the first to review this product!</p>
+    </ng-template>
+  </div>
+</div>
+
+
+<div *ngIf="product" class="product-detail-container" hidden>
+  <div class="product-header">
+    <h2>{{ product.name }}</h2>
+    <p class="product-description">{{ product.description }}</p>
+  </div>
+
+  <div class="product-images">
+    <img *ngFor="let image of product.images" [src]="image.imageUrl" [alt]="image.altText || product.name" class="product-image">
+  </div>
+
+  <div class="product-info">
+    <p><strong>Price:</strong> {{ product.price | currency }}</p>
+    <p><strong>Stock:</strong> {{ product.stock }}</p>
+    <button class="add-to-cart-btn">Add to Cart</button>
+  </div>
+
+  <div class="product-reviews">
+    <h3>Customer Reviews</h3>
+    <div *ngIf="product.reviews.length > 0; else noReviews">
+      <div *ngFor="let review of product.reviews" class="review-item">
+        <p><strong>Rating:</strong> {{ review.rating }} / 5</p>
+        <p>{{ review.comment }}</p>
+        <p class="review-date">{{ review.createdAt | date:'mediumDate' }}</p>
+      </div>
+    </div>
+    <ng-template #noReviews>
+      <p>No reviews yet. Be the first to review this product!</p>
+    </ng-template>
+  </div>
+</div>
+
+<div *ngIf="errorMessage" class="error-container">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<div *ngIf="!product && !errorMessage" class="loading-container">
+  <p>Loading product details...</p>
+</div>

@@ -2,6 +2,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
+export interface Review {
+  reviewId: number;
+  rating: number;
+  comment: string;
+  createdAt: string;
+}
+
+export interface Image {
+  imageId: number;
+  imageUrl: string;
+  altText: string | null;
+}
+
+export interface Product {
+  quantity: number;
+  productId: number;
+  name: string;
+  description: string;
+  price: number;
+  stock: number;
+  createdAt: string;
+  updatedAt: string;
+  reviews: Review[];
+  images: Image[];
+  categoryId: number;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })

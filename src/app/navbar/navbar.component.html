@@ -3,12 +3,12 @@
     <ul class="nav-links">
         <li><a routerLink="/landing-page">Home</a></li>
         <!-- <li><a routerLink="/shop">Shop</a></li> -->
-        <li class="dropdown">
+        <!-- <li class="dropdown">
             <a href="#" class="dropbtn" (click)="stayOnPage($event)">Categories</a>
             <div class="dropdown-content">
                 <a *ngFor="let category of categories" [routerLink]="getCategoryLink(category.id)">{{ category.name }}</a>
             </div>
-        </li>
+        </li> -->
         <ul class="nav-profile">
             <!-- <li class="dropdown">
                 <a href="#" class="dropbtn">Profile</a>
@@ -20,9 +20,9 @@
         <li class="dropdown">
             <a href="#" class="dropbtn"  (click)="stayOnPage($event)">Categories</a>
             <div class="dropdown-content">
-                <a routerLink="/categories/electronics">Electronics</a>
-                <a routerLink="/categories/clothing">Clothing</a>
-                <a routerLink="/categories/accessories">Accessories</a>
+                <a *ngFor="let category of categories" (click)="onCategoryClick(category.name)">
+                    {{ category.name }}
+                </a>
             </div>
         </li>
         <!-- <li><a routerLink="/cart">Cart</a></li> -->
