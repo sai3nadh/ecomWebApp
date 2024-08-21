@@ -16,9 +16,7 @@ export interface UserProfile {
   providedIn: 'root'
 })
 export class ProfileService {
-  private profileUrl = 'http://13.40.219.97:8084/'
-  //  apiUrl 
-   + 'api/users/';
+  private profileUrl = environment.apiUrl + 'api/users/';
 
   constructor(private http: HttpClient) { }
 

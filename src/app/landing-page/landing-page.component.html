@@ -1,114 +1,19 @@
-<!-- <p>landing-page works!</p> -->
-<!-- 
-<header>
-  <div class="container">
-      <h1>My Website</h1>
-      <nav>
-          <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="contact.html">Contact</a></li>
-          </ul>
-      </nav>
-  </div>
-</header> -->
 <app-navbar></app-navbar>
 
-
-
 <div class="landing-page">
-  <!-- Recommendations Section -->
-  <section class="section recommendations" hidden>
-    <h2>Recommended Products</h2>
-    <div class="products-container-wrapper">
-      <button class="scroll-button left" (click)="scrollLeft('recommended')">&lt;</button>
-      <div class="products-container" #recommended>
-        <div class="product-card" *ngFor="let product of recommendedProducts">
-          <img [src]="product.img" [alt]="product.name" />
-          <p>{{ product.name }}</p>
-        </div>
-      </div>
-      <button class="scroll-button right" (click)="scrollRight('recommended')">&gt;</button>
-    </div>
-  </section>
-
-  <!-- Offers Section -->
-  <section class="section offers" hidden>
-    <h2>Special Offers</h2>
-    <div class="products-container-wrapper">
-      <button class="scroll-button left" (click)="scrollLeft('offers')">&lt;</button>
-      <div class="products-container" #offers>
-        <div class="product-card" *ngFor="let product of offerProducts">
-          <img [src]="product.img" [alt]="product.name" />
-          <p>{{ product.name }}</p>
-        </div>
-      </div>
-      <button class="scroll-button right" (click)="scrollRight('offers')">&gt;</button>
-    </div>
-  </section>
-</div>
-
-<div class="landing-page1">
-  <!-- Header: Assuming you already have it included elsewhere -->
-
-  <!-- Recommendations Section -->
-  <section class="section recommendations">
-    <h2>Recommended Products</h2>
+  <div *ngFor="let category of categoryData">
+    <h2>{{ category.name }}</h2>
     <div class="products-container">
-      <div class="product-card" *ngFor="let product of recommendedProducts">
-        <img [src]="product.img" [alt]="product.name" />
+      <div class="product-card" *ngFor="let product of category.products" [routerLink]="['/product', product.productId]">
+        <img [src]="product.images[0]?.imageUrl" [alt]="product.images[0]?.altText || 'Product image'">
         <p>{{ product.name }}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Offers Section -->
-  <section class="section offers">
-    <h2>Special Offers</h2>
-    <div class="products-container">
-      <div class="product-card" *ngFor="let product of offerProducts">
-        <img [src]="product.img" [alt]="product.name" />
-        <p>{{ product.name }}</p>
-      </div>
-    </div>
-  </section>
-</div>
-
-
-
-<div class="landing-page-container" hidden>
-    <h1>Welcome to Our E-Commerce Store</h1>
-  
-    <div class="featured-products">
-      <h2>Featured Products</h2>
-      <div *ngFor="let product of featuredProducts" class="product-item">
-        <img [src]="product.imageUrl" alt="{{ product.name }}">
-        <div class="product-info">
-          <h3>{{ product.name }}</h3>
-          <p>{{ product.description }}</p>
-          <button (click)="addToCart(product)">Add to Cart</button>
-        </div>
-      </div>
-    </div>
-    <!-- Display Featured Products -->
-<div *ngIf="featuredProducts && featuredProducts.length">
-    <h2>Featured Products</h2>
-    <ul>
-      <li *ngFor="let product of featuredProducts">
-        {{ product.name }} -
-         <!-- {{ product.price  }} -->
-      </li>
-    </ul>
-  </div>
-  
-    <div class="categories">
-      <h2>Categories</h2>
-      <div *ngFor="let category of categories" class="category-item">
-        <h3>{{ category.name }}</h3>
-        <p>{{ category.description }}</p>
+        <p>{{ product.price | currency }}</p>
       </div>
     </div>
   </div>
-  
+</div>
 
-  
+<div *ngIf="errorMessage">
+  <p>{{ errorMessage }}</p>
+</div>
+
