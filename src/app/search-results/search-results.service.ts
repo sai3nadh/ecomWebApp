@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class SearchResultsService {
 
   // constructor() { }
 
-  private apiUrl = 'http://localhost:8083/api/search';  // Replace with your actual API URL
-  private apiCartUrl = 'http://localhost:8086/api/carts';
+  private apiUrl = environment.apiUrl+'api/search' ;//'http://localhost:8083/api/search';  // Replace with your actual API URL
+  private apiCartUrl = environment.apiUrl+'api/carts'  ;//'http://localhost:8086/api/carts';
 
   constructor(private http: HttpClient) { }
 

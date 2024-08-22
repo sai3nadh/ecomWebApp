@@ -13,6 +13,7 @@ import { CartService } from './cart.service';
 // import { ProductService } from '../product-detail/product-detail.service'; // Assuming this service exists
 import { ProductDetailService } from '../product-detail/product-detail.service';  // Update the path as needed
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface CartItem {
   cartItemId: number;
@@ -115,7 +116,7 @@ export class CartComponent implements OnInit {
   }
 
   createOrder(orderData: any): Observable<any> {
-    const url = 'http://localhost:8085/api/orders/createOrder';
+    const url = environment.apiUrl+'/api/orders/createOrder' ;//'http://localhost:8085/api/orders/createOrder';
     return this.http.post(url, orderData);
   }
 

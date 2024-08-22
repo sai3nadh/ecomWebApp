@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 
 export interface Review {
@@ -35,7 +36,9 @@ export interface Product {
   providedIn: 'root'
 })
 export class ProductDetailService {
-  private apiUrl = 'http://localhost:8083/api/products';  // Adjust the API base URL
+  
+  private apiUrl = environment.apiUrl+'api/products';
+  // 'http://localhost:8083/api/products';  // Adjust the API base URL
 
   constructor(private http: HttpClient) { }
 
