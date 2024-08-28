@@ -15,9 +15,9 @@
     <div *ngIf="productDetails[i]">
       <h3>{{ productDetails[i].name }}</h3>
       <p>{{ productDetails[i].description }}</p>
-      <p>Price: {{ productDetails[i].price | currency }}</p>
+      <p>Price: {{ productDetails[i].price | currency:'GBP' }}</p>
       <p>Quantity: {{ item.quantity }}</p>
-      <p>Total: {{ item.quantity * productDetails[i].price | currency }}</p>
+      <p>Total: {{ item.quantity * productDetails[i].price | currency:'GBP' }}</p>
     
       <!-- Displaying product images -->
       <div *ngIf="productDetails[i].images.length > 0">

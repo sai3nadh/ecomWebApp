@@ -7,7 +7,7 @@
       <div class="product-card" *ngFor="let product of category.products" [routerLink]="['/product', product.productId]">
         <img [src]="product.images[0]?.imageUrl" [alt]="product.images[0]?.altText || 'Product image'">
         <p>{{ product.name }}</p>
-        <p>{{ product.price | currency }}</p>
+        <p>{{ product.price | currency:'GBP' }}</p>
       </div>
     </div>
   </div>

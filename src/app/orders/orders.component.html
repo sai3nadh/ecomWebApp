@@ -10,7 +10,7 @@
   <h2>Your Previous Orders</h2>
   <div *ngFor="let order of orders" class="order-item">
     <h3>Order #{{ order.orderId }} - {{ order.orderDate | date }}</h3>
-    <p>Total Amount: {{ order.totalAmount | currency }}</p>
+    <p>Total Amount: {{ order.totalAmount | currency:'GBP' }}</p>
     <div *ngFor="let item of order.orderItems" class="order-item-details">
       <p>Product ID: {{ item.productId }}</p>
       <p>Quantity: {{ item.quantity }}</p>
