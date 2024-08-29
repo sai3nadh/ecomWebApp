@@ -3,8 +3,29 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
-export interface OrderItem {
+export interface Product {
+  quantity: number;
   productId: number;
+  name: string;
+  description: string;
+  price: number;
+  stock: number;
+  images: Image[];
+  createdAt: string;
+  updatedAt: string;
+  categoryId: number;
+}
+
+
+export interface Image {
+  imageId: number;
+  imageUrl: string;
+  altText: string | null;
+}
+
+export interface OrderItem {
+  orderItemId: number;
+  product: Product;  
   quantity: number;
   price: number;
 }
@@ -12,9 +33,12 @@ export interface OrderItem {
 export interface Order {
   orderId: number;
   userId: number;
-  totalAmount: number;
+  customerName: string;
+  customerEmail: string;
   orderDate: string;
+  totalAmount: number;
   orderItems: OrderItem[];
+  status: string;
 }
 
 @Injectable({

@@ -12,9 +12,12 @@
     <h3>Order #{{ order.orderId }} - {{ order.orderDate | date }}</h3>
     <p>Total Amount: {{ order.totalAmount | currency:'GBP' }}</p>
     <div *ngFor="let item of order.orderItems" class="order-item-details">
-      <p>Product ID: {{ item.productId }}</p>
+      <p>Product Name: {{ item.product.name }}</p>
       <p>Quantity: {{ item.quantity }}</p>
       <p>Price: {{ item.price | currency }}</p>
+      <div *ngIf="item.product.images && item.product.images.length > 0">
+        <img [src]="item.product.images[0].imageUrl" [alt]="item.product.images[0].altText || 'Product Image'" class="product-image"/>
+      </div>
       <hr>
     </div>
   </div>

@@ -33,3 +33,11 @@
     border-radius: 4px;
   }
   
+  .product-image {
+    width: 100px;  
+    height: auto;  
+    max-height: 100px; 
+    object-fit: cover; 
+    margin-bottom: 10px;
+  }
+  
