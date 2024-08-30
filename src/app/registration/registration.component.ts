@@ -65,29 +65,47 @@ export class RegistrationComponent {
     alert(this.registrationError);
     return;
   }
-    this.http.post(this.registrationUrl, registrationPayload, { responseType: 'text' })
-      .subscribe(
-        (response: any) => {
-          // console.log('Registration successful:', response);
-          // this.router.navigate(['/landing-page']);
-            // Check if the response indicates success
-        // Assuming the response should indicate success for status 200
-        if (response === 'Registration successful') {
-          console.log('Registration successful:', response);
-          this.router.navigate(['/landing-page']);
-        } else {
-          // Handle unexpected successful response that is not a proper success message
-          this.registrationError = 'Registration failed. Unexpected response+.'+response.message;
-          console.error('Unexpected response:', response.message);
-          alert('Registration failed. Unexpected response.');
+  this.http.post(this.registrationUrl, registrationPayload, { responseType: 'text' })
+  .subscribe(
+    (response: any) => {
+      if (response && response.userId) {
+        console.log('Registration successful for user:', response.username);
+        alert('Registration successful! Please log in to continue.');
+        this.router.navigate(['/login']);
+      } else {
+        this.registrationError = 'Registration failed. Unexpected response.';
+        console.error('Unexpected response:', response);
+        alert(this.registrationError);
       }
-        },
-        (error) => {
-          this.registrationError = 'Registration failed. Please try again.';
-          console.error('Registration failed:', error);
-          alert('Registration failed. Please try again.');
+    },
+    (error) => {
+      if (error.status === 400) {
+
+        let errorMessage: string;
+        try {
+
+          const parsedError = JSON.parse(error.error);
+          errorMessage = parsedError?.message || 'Unknown error occurred.';
+        } catch (e) {
+          errorMessage = 'Unknown error occurred while parsing error response.';
         }
-      );
+
+        if (errorMessage === 'Email already exists') {
+          this.registrationError = 'Registration failed: The email address is already in use. Please use a different email or log in if you already have an account.';
+        } else {
+          this.registrationError = 'Registration failed. Error: ' + errorMessage;
+        }
+
+        alert(this.registrationError);
+      } else {
+        this.registrationError = 'Registration failed. Please check your network connection or try again later.';
+        console.error('Registration failed:', error);
+        alert(this.registrationError);
+      }
+    }
+  );
+
+
   }
 
   onLogin() {
